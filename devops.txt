@@ -1,0 +1,9 @@
+------------------------------------------
+sit-system integrating testing
+integrating entire module
+smoke testing-lead doing testing
+user acceptance testing- user will test the functionality(functional testing, load testing,non fuctional testing(checking performance,response time,optimizing))
+------------------------------------------
+
+agile is increment and ifrate development
+build---(validate,compile)
