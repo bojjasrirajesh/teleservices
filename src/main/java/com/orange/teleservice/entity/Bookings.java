@@ -15,13 +15,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Users {
+public class Bookings {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long bookingId;
+	private String adAgencyName;
+	private String bookingDate;	
+	private Long slotsId;
 	private Long userId;
-	private String userName;
-	private String password;
-	private String mobile;
-	private String email;
-	private String roleName;
 }

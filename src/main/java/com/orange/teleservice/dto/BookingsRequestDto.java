@@ -5,12 +5,13 @@ import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
-public class LoginResponseDto implements Serializable{
+@Getter
+public class BookingsRequestDto implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String message;
-	private Integer statusCode;
+	private Long eventId;
+	private Long slotId;
 	private Long userId;
-	private String roleName;
+	private Integer refId;	
+	private String adAgencyName;
 }

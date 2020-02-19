@@ -7,5 +7,5 @@ import com.orange.teleservice.entity.Users;
 
 @Repository
 public interface UserRepository extends JpaRepository<Users,Long>{
-	Users findByUserNameAndPassword(String userName,String password);
+	Users findByMobileAndPassword(String mobile, String password);	
 }

@@ -15,13 +15,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Users {
+public class Plans {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long userId;
-	private String userName;
-	private String password;
-	private String mobile;
-	private String email;
-	private String roleName;
+	private Long planId;
+	private String planName;
+	private Double charges;	
 }

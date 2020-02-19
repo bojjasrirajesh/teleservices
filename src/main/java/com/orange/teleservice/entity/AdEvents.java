@@ -1,5 +1,7 @@
 package com.orange.teleservice.entity;
 
+import java.time.LocalTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,13 +17,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Users {
+public class AdEvents {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long userId;
-	private String userName;
-	private String password;
-	private String mobile;
-	private String email;
-	private String roleName;
+	private Long eventId;
+	private Long planId;
+	private String evenName;
+	private String eventDate;
+	private LocalTime startTime;
+	private LocalTime endTime;
 }

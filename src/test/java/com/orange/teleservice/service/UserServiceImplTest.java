@@ -1,17 +1,20 @@
-package com.orange.teleservice.controller;
+package com.orange.teleservice.service;
 
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+
 import com.orange.teleservice.dto.LoginDto;
 import com.orange.teleservice.dto.LoginResponseDto;
 import com.orange.teleservice.entity.Users;
+import com.orange.teleservice.exception.UserNotFoundException;
 import com.orange.teleservice.repository.UserRepository;
-import com.orange.teleservice.service.UserServiceImpl;
+
 
 @RunWith(MockitoJUnitRunner.Silent.class)
 public class UserServiceImplTest {
@@ -31,11 +34,22 @@ public class UserServiceImplTest {
 		user.setUserName("rajesh");
 		user.setPassword("8283jks");
 		LoginDto loginDto = new LoginDto();
-		loginDto.setUName(user.getUserName());
+		loginDto.setMobile(user.getUserName());
 		loginDto.setPassword(user.getPassword());
-		Mockito.when(userRepository.findByUserNameAndPassword(loginDto.getUName(), loginDto.getPassword()))
-				.thenReturn(user);
-		LoginResponseDto usersLogin = userServiceImpl.usersLogin(loginDto);
-		Assert.assertEquals(usersLogin.getStatusCode(), new Integer(200));
+		Mockito.when(userRepository.findByMobileAndPassword(loginDto.getMobile(), loginDto.getPassword())).thenReturn(user);
+		LoginResponseDto loginResponseDto=new LoginResponseDto();
+		
+		 loginResponseDto=userServiceImpl.usersLogin(loginDto);
+		 loginResponseDto.setStatusCode(200);
+		 assertEquals(200,loginResponseDto.getStatusCode());
 	}
+
+	@Test(expected = UserNotFoundException.class)
+	public void testUsersLoginNegative() {
+		Users user = new Users();
+		LoginDto loginDto = new LoginDto();
+		Mockito.when(userRepository.findByMobileAndPassword("", "")).thenReturn(user);
+		userServiceImpl.usersLogin(loginDto);
+	}
+
 }

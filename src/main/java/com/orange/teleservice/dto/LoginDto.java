@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 public class LoginDto implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private String uName;
+	private String mobile;
 	private String password;
 }
